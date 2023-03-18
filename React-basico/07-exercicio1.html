@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercicio 1</title>
 
     <style>
-        .text1{
+        .parag1{
             color: purple;
             border: 2px solid black;
             margin: 5px;
@@ -16,7 +16,7 @@
             padding: 10px;
         }
 
-        .text2{
+        .parag2{
             color: darkcyan;
             border: 2px solid black;
             margin: 5px;
@@ -61,28 +61,19 @@
             7) Faça os comentarios que julgar necessarios no codigo
         */
 
-        const Nome = ({nome, sobrenome, ...props}) =>
-        <div className="text1" {...props}>
-                Nome: {nome} {sobrenome}
-        </div>
+        //componente que recebe props personalizados
+         const Dados = ({ nome, sobrenome, dia, mes, ano, ...props }) => 
+         <>
+            <p {...props} className="parag1">Nome: {nome} {sobrenome}</p>
 
-        const Aniversario = ({dia, mes, ano, ...props}) =>
-        <div className="text2" {...props}>
-            Nascimento: {dia}/{mes}/{ano}
-        </div>
+            <p {...props} className="parag2">Data de nascimento: {dia + '/' + mes + '/' + ano}</p>
 
-        const Idadefimano = ({anonascimento, ...props}) =>
-        <div>
-            No final de 2023, Bruno terá {2023 - anonascimento} 
-        </div>
+            <div {...props} className="parag1">Idade ao final do ano: {2023 - ano} anos</div>
+        </>
 
-        const container = 
+        const container =
             <>
-            <Nome id="paragnome" nome="Bruno" sobrenome="Cason da Silva" title="Nome completo"/>
-
-            <Aniversario id="paragidade" dia={31} mes={10} ano={2003}title="Aniversario" />
-
-            <Idadefimano id="idade" anonascimento={2003} title="Idade dim do ano"/>
+                <Dados nome="Bruno" sobrenome="Cason" dia="31" mes="10" ano="2003" />
             </>
 
         const root = ReactDOM.createRoot(document.getElementById('root'))
